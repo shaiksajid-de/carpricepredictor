@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Predictor</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Car Price Predictor</h1>
+        <form action="/predict" method="POST">
+        <!-- Name -->
+        <label for="name">Car Name:</label>
+        <input type="text" name="name" required>
+
+            <!-- Company -->
+            <label for="company">Car Company:</label>
+            <input type="text" name="company" required>
+            
+            <!-- Year -->
+            <label for="year">Year of Manufacture:</label>
+            <input type="number" name="year" required>
+            
+            <!-- Kilometers Driven -->
+            <label for="kms_driven">Kilometers Driven:</label>
+            <input type="number" name="kms_driven" required>
+            <br>
+            
+            <!-- Fuel Type -->
+            <label for="fuel_type_select">Fuel Type:</label>
+            <select name="fuel_type" id="fuel_type_select" required style="width: 95%; height: 35px; font-size: 12px; padding: 2px;">
+                <option value="">--Please choose an option--</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">CNG</option>
+                <option value="Electric">Electric</option>
+            </select>
+            <br><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="output">
+            {% if prediction_text %}
+                <h2>{{ prediction_text }}</h2>
+            {% endif %}
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
